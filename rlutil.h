@@ -1,5 +1,5 @@
 #pragma once
-/**
+/*
  * File: rlutil.h
  *
  * About: Description
@@ -166,7 +166,7 @@ namespace rlutil {
  * YELLOW - Yellow (bright)
  * WHITE - White (bright)
  */
-enum {
+enum COLOR{
 	BLACK,
 	BLUE,
 	GREEN,

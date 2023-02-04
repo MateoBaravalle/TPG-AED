@@ -69,13 +69,13 @@ void menu(int &op,int &yCord)
 			switch(yCord)
 			{
 				case 0:
-					//recepcion();
+					recepcion();
 					break;
 				case 1:
-					//administracion();
+					administracion();
 					break;
 				case 2:
-					//entrenadores();
+					entrenadores();
 					break;
 				case 4:
 					op=1;

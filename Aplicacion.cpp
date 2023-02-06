@@ -42,7 +42,7 @@ main()
 											{
 												case 0:
 													
-													visorRutina(); while()
+													visorRutina();
 													break;
 												
 												case 1:
@@ -119,16 +119,21 @@ main()
 					switch(op)
 					{
 						case 0:
-						//	login();
+						
+							login();
 							break;
+						
 						case 1:
-						//	coachList();
+							
+							regSoc();
 							break;
+						
 						case 4:
 							break;
 					}
 				}
 				break;
+
 			case 2:
 					
 				while(op!=4)

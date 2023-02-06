@@ -1,6 +1,27 @@
 #ifndef _TpgAed
 #define _TpgAed
 
+struct fecha
+{
+    int dia;
+    int mes;
+    int anio;
+};
+
+struct socios
+{
+    char apeynom[60];
+    char dom[20];
+    int dni;
+    fecha fec;
+    int edad;
+    int peso;
+    int telefono;
+    char rutina[3800];
+    char ind[100];
+};
+
+
 void menu(int &op)
 {
 	int yCord=0;
@@ -138,6 +159,46 @@ void coach(int &op)
 				break;
 		}
 	}	
+}
+
+visorRutina()
+{
+    struct socios s;
+    int dni, opcion;
+    FILE *archivo;
+
+    printf("Ingrese el DNI: ");
+    scanf("%d", &dni);
+
+    archivo = fopen("socios.dat", "r+b");
+    if (archivo == NULL)
+    {
+        printf("Error al abrir el archivo\n");
+        exit(1);
+    }
+
+    while (fread(&s, sizeof(struct socios), 1, archivo))
+    {
+        if (s.dni == dni)
+        {
+            printf("Rutina: %s\n", s.rutina);
+            printf("Presione E para editar o ESC para salir\n");
+            opcion = getch();
+            if (opcion == 'E')
+            {
+                printf("Ingrese la nueva rutina: ");
+                scanf("%s", s.rutina);
+                fseek(archivo, -sizeof(struct socios), SEEK_CUR);
+                fwrite(&s, sizeof(struct socios), 1, archivo);
+            }
+            else if (opcion == 27) // Valor de ESC en ASCII
+            {
+                break;
+            }
+        }
+    }
+
+    fclose(archivo);
 }
 
 

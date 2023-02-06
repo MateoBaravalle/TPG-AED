@@ -71,8 +71,7 @@ printf("\n\n\n\n\n\n");
         
         
         	//VALIDACIION CARACETERES(+, -, /,*,?,¿,!,i)
-	     	int i=0;
-		    for(i =0;i<longitud;i++){	
+	        for(int i =0;i<longitud;i++){	
 		    x=CAD1[i];
 	     	if (x==43 || x==45 || x==47 || x==42 || x==63 || x==168 || x==33 ||x==173){
 			band=0;
@@ -129,7 +128,7 @@ printf("\n\n\n\n\n\n");
 		 
 	band=1;
 	printf("\nERROR. como maximo son 3 digitos");
-	printf("\nERROR. como maximo son 3 digitos Y vos tenes %d ",num);
+
 	 num=0;	
     }   
 
@@ -141,15 +140,12 @@ printf("\n\n\n\n\n\n");
 	
 	   while(!feof(arch)){
 		   
-		 fgets(palabra,100,arch);  
-		 //obtiene una linea del archivo
+		 fgets(palabra,100,arch);  //obtiene una linea del archivo
 		 //repetido=strcmp(CAD1,palabra);
 		 y=0;
-		 int i=0;
-		 
-		 for(i=0;i<longitud;i++){
+		 for(int i=0;i<longitud;i++){
 			 
-			 printf("\ny= %d",y);
+			
 			 if(palabra[i]!=CAD1[i]){
 				 y=-1;
 		 }else y=y+1;

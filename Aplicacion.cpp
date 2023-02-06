@@ -1,101 +1,159 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "rlutil.h"
+#include "TpgAed.h"
 
-void menu(int &op,int &yCord);
 
 main()
 {
+	int op1=0, op2=0, op3=0, op4=0;
 	
-	
-	int opc=0,yCord=0;
-	
-	do
+	while(op1!=4)
 	{
-		menu(opc,yCord);
-		
-	}while(opc !=1);
-
-}
-
-void menu(int &op,int &yCord)
-{
-
-	rlutil::locate(1,1);
-	printf("  Subir(W)/Bajar(S)/Selec(Enter)\n");
-	printf("       _____________________\n");
-	printf("      /=======GymStats======\\\n");
-	printf("      |                     |\n");
-	printf("      |   Tipo de Usuario   |\n");
-	printf("      |                     |\n");
-	printf("      |        Coach        |\n");
-	printf("      |      Recepcion      |\n");
-	printf("      |        Admin        |\n");
-	printf("      |                     |\n");
-	printf("      |        Salir        |\n");
-	printf("      \\____________________/\n");
-
-// Ubicacion del Puntero
-	rlutil::locate(13,7+yCord);
-	printf("%c\n\n",175);
-	rlutil::locate(23,7+yCord);
-	printf("%c\n\n",174);
+		menu(op1);
 	
-	rlutil::hidecursor();
-
-	int key = rlutil::getkey();
-	
-	switch(key)
-	{
-		case 119: //Arriba
-			
-			if(yCord!=0)
-				if(yCord>2)
-					yCord-=2;
-				else
-					yCord--;
-			
-			break;	
-		case 115: //Abajo
-			
-			if(yCord!=4)
-				if(yCord!=2)
-					yCord++;
-				else
-					yCord+=2;
-			
-			break;
-		case 1:
-			switch(yCord)
-			{
-				case 0:
-					//recepcion();
-					break;
-				case 1:
-					//administracion();
-					break;
-				case 2:
-					//entrenadores();
-					break;
-				case 4:
-					op=1;
-					break;
-			}
-			break;
+		switch(op1)
+		{
+			case 0:
+				
+				while(op2!=4)
+				{
+					coach(op2);
+				
+					switch(op2)
+					{
+						case 0: // No se logeo aun
+							
+							while(op3!=2)
+							{
+								login(op3);
+								
+								switch(op3)
+								{
+									//OPCIONES
+									case 0: //usuario existente
+										
+										while(op4!=4)
+										{
+											coachSubmenu(op4);
+											
+											switch(op4)
+											{
+												case 0:
+													
+													visorRutina();
+													break;
+												
+												case 1:
+													
+													coachList();
+													break;
+														
+												case 4:
+													break;
+											}	
+										}
+										op4 = 0;
+										
+										break;
+									
+									case 1: //Maximo de intentos
+										
+										systemBlock();
+										break;
+									
+									case 2: //Atras
+										break;
+								}
+							}
+							op3 = 0;
+							
+							break;
+						
+						case 1: // visor de Turnos notLogin
+							
+							while(op3!=4)
+							{
+								coachList(op3);	
+							}
+							
+							break;
+						
+						case 2: //Usuario logeado
+							
+							while(op4!=4)
+							{
+								coachSubmenu(op4);
+								
+								switch(op4)
+								{
+									case 0:
+										
+										visorRutina(); //visor de Rutina
+										break;
+									
+									case 1:
+										
+										coachList(); // Visor de Turnos
+										break;
+											
+									case 4:
+										break;
+								}	
+							}
+							
+						case 4: //Atras
+							break;
+					}
+				}
+				op2 = 0;
+				
+				break;
+			case 1:
+					
+				while(op!=4)
+				{
+					recep(op);
+				
+					switch(op)
+					{
+						case 0:
+						//	login();
+							break;
+						case 1:
+						//	coachList();
+							break;
+						case 4:
+							break;
+					}
+				}
+				break;
+			case 2:
+					
+				while(op!=4)
+				{
+					//admin(op);
+					op=4;
+					switch(op)
+					{
+						case 0:
+						//	login();
+							break;
+						case 1:
+						//	coachList();
+							break;
+						case 4:
+							break;
+					}
+				}
+				break;
+			case 4:
+				
+				break;
+		}
 	}
 	
-	/* INGRESO MANUAL CON VALIDACION
-	rlutil::locate(30,8);
-	printf("Opcion: ");	
-	if(scanf("%d",&op)!=1)
-	{
-		_flushall();
-		rlutil::locate(25,10);
-		printf("Entrada invalida!!");
-		rlutil::locate(18,11);
-		printf("Por favor ingrese un Numero valido %c",175);
-		op = 1;
-		getch();
-	}
-	*/
+	printf("AGRADECIMIENTO / INTEGRANTES");
+	
 }
+

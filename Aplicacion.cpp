@@ -12,7 +12,8 @@ main()
 	{
 		menu(op1);
 	
-		switch(op1)
+		switch(op1) //Depende de la pos Y del cursor
+		
 		{
 			case 0:
 				
@@ -26,7 +27,7 @@ main()
 							
 							while(op3!=2)
 							{
-								login(op3);
+								login(op3,0);
 								
 								switch(op3)
 								{
@@ -41,7 +42,7 @@ main()
 											{
 												case 0:
 													
-													visorRutina();
+													visorRutina(); while()
 													break;
 												
 												case 1:

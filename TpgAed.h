@@ -4,6 +4,7 @@
 void menu(int &op)
 {
 	int yCord=0;
+	
 	while(op!=1)
 	{
 		rlutil::locate(1,1);

@@ -25,38 +25,52 @@ struct socios
 
 void Fechadepago()
 {
+	
 	FILE *arch;
 	arch = fopen ("Socios.dat","rb");
-	
-	int dni;
 	
 	bool b=false;
 	
 	socios aux;
+	socios aux2;
 	
 	if (arch == NULL)
 	{
+		
  		printf ("no se pudo abrir el archivo");
+ 		
 	}
 	else
 	{
 		
-		printf ("ingrese un numero de dni: ");
-		scanf ("%d", &dni);
+		printf ("ingrese un dia:  ");
+		scanf ("%d", &aux2.fec.dia);
+		
+		printf ("ingrese un mes:  ");
+		scanf ("%d", &aux2.fec.mes);
+		
+		printf ("ingrese un anio: ");
+		scanf ("%d", &aux2.fec.anio);
 		
 		while(fread(&aux, sizeof(aux), 1, arch))
 		{
-			if(dni == aux.dni)
+			
+			if(aux2.fec.dia >= aux.fec.dia)
 			{
+			
 				printf("La fecha de ingreso fue: %d/%d/%d ", aux.fec.dia, aux.fec.mes, aux.fec.anio);
 				
 				b=true;
+				
 			}
+			
 		}
 		
 		if(!b)
 		{
-			printf("no se encontraron coincidencias");
+		
+			printf("\nno se encontraron coincidencias");
+			
 		}
 		
 		fclose(arch);
@@ -66,14 +80,10 @@ void Fechadepago()
 
 main()
 {
+	
 	Fechadepago();
 	
 	return 0;
-	
-	
-	
-	
-	
 	
 }
 

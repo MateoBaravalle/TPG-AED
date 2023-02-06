@@ -1,0 +1,16 @@
+Rutina para el socio Mateo
+:
+uno dos tres cuatro cinco seis siete ocho nueve diez uno dos tres cuatro cinco seis siete ocho nueve diez uno dos tres cuatro cinco seis siete ocho nueve diez uno dos tres cuatro cinco seis siete ocho nueve diez uno dos tres cuatro cinco seis siete ocho nueve diez uno dos tres cuatro cinco seis siete ocho nueve diez uno dos tres cuatro cinco seis siete ocho nueve diez uno dos 
+Rutina para el socio mateo
+:
+uno dos tres cuatro cinco seis siete ocho nueve diez uno dos tres cuatro cinco seis siete ocho nueve diez uno dos tres cuatro cinco seis siete ocho nueve diez uno dos tres cuatro cinco seis siete ocho nueve diez uno dos tres cuatro cinco seis siete ocho nueve diez uno dos tres cuatro cinco seis siete ocho nueve diez uno dos tres cuatro cinco seis siete ocho nueve diez uno dos 
+Rutina para el socio Eduerdo
+:
+#include <stdio.h>
+
+Rutina para el socio Eduardo
+:
+uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cuatro cinco uno dos tres cu
+Routine for member 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 :
+ 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+

@@ -54,6 +54,8 @@ void RegistrarSocios();
 	socios aux;
 	
 	bool found = false;
+	
+	fseek(arch,sizeof(socios),SEEK_SET);
 	fread(&aux,sizeof(aux),1,arch);
 	
 	while(!feof(arch))
@@ -90,13 +92,14 @@ void RegistrarSocios();
 
 	if (!found) 
 	{  
+		
 		rlutil::cls();
 		
 		system("cls");
 		printf("=============================================\n");
 		printf("=       ***  REGISTRO DE SOCIOS  ***        =\n");
 		printf("=============================================\n");
-		printf("                                            =\n");
+		printf(" *NO INSERTE ESPACIOS*                      =\n");
 		printf("= NOMBRE Y APELLIDO :\n");
 		printf("= DOMICILIO:\n");
 		printf("= --FECHA DE INICIO--\n");
@@ -111,7 +114,7 @@ void RegistrarSocios();
 		printf("  >\n\n");
 		printf("=============================================\n");
 		
-		
+		aux.dni = dnibuscar;
 		rlutil::locate(22,5); 
 		scanf("%s",aux.apeynom);
 		fflush(stdin);

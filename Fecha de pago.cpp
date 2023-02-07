@@ -43,25 +43,67 @@ void Fechadepago()
 	else
 	{
 		
+		checkpoint:
+		
 		printf ("ingrese un dia:  ");
 		scanf ("%d", &aux2.fec.dia);
 		
-		printf ("ingrese un mes:  ");
-		scanf ("%d", &aux2.fec.mes);
+		if (aux2.fec.dia <= 31 && aux2.fec.dia != 0)
+		{
 		
-		printf ("ingrese un anio: ");
-		scanf ("%d", &aux2.fec.anio);
+			printf ("ingrese un mes:  ");
+			scanf ("%d", &aux2.fec.mes);
+			
+			if(aux2.fec.mes <= 12 && aux2.fec.mes != 0)
+			{
+			
+				printf ("ingrese un anio: ");
+				scanf ("%d", &aux2.fec.anio);
+			
+			}else
+			{
+			
+				printf("no pa no seas tonto, vamos denuevo\n\n\n\n");
+				system("pause");
+				system("cls");
+				goto checkpoint;
+				
+			}
+			
+		}else
+		{
+			
+			printf("no pa no seas tonto, vamos denuevo\n\n\n\n");
+			system("pause");
+			system("cls");
+			goto checkpoint;
+			
+		}
+		
+		printf("\n\n\n\nla fecha ingresada es: %d/%d/%d\n", aux2.fec.dia, aux2.fec.mes, aux2.fec.anio);
 		
 		while(fread(&aux, sizeof(aux), 1, arch))
 		{
 			
-			if(aux2.fec.dia >= aux.fec.dia)
+			if(aux2.fec.anio >= aux.fec.anio)
 			{
-			
-				printf("La fecha de ingreso fue: %d/%d/%d ", aux.fec.dia, aux.fec.mes, aux.fec.anio);
 				
-				b=true;
+				if (aux2.fec.mes > aux.fec.mes)
+				{
+					
+					if(aux2.fec.dia > aux.fec.dia)
+					{
+						
+						printf("\n=> el gil de mierda que debe es: %d,", aux.dni);
+						printf(" y debe desde: %d/%d/%d ", aux.fec.dia, aux.fec.mes, aux.fec.anio);
+						
+						
+						b=true;
 				
+					}
+					
+				}
+					
 			}
 			
 		}
@@ -69,22 +111,21 @@ void Fechadepago()
 		if(!b)
 		{
 		
-			printf("\nno se encontraron coincidencias");
+			printf("\n=> no se encontraron coincidencias");
 			
 		}
 		
-		fclose(arch);
-	
 	}
+	
+	fclose(arch);
+	
 }
 
 main()
 {
 	
 	Fechadepago();
-	
+	printf("\n");
 	return 0;
 	
 }
-
-

@@ -32,7 +32,8 @@ void Fechadepago()
 	bool b=false;
 	
 	socios aux;
-	socios aux2;
+	
+	int dia, mes, anio;
 	
 	if (arch == NULL)
 	{
@@ -46,26 +47,29 @@ void Fechadepago()
 		checkpoint:
 		
 		printf ("ingrese un dia:  ");
-		scanf ("%d", &aux2.fec.dia);
+		scanf ("%d", &dia);
 		
-		if (aux2.fec.dia <= 31 && aux2.fec.dia != 0)
+		if (dia <= 31 && dia != 0)
 		{
 		
 			printf ("ingrese un mes:  ");
-			scanf ("%d", &aux2.fec.mes);
+			scanf ("%d", &mes);
 			
-			if(aux2.fec.mes <= 12 && aux2.fec.mes != 0)
+			if(mes <= 12 && mes != 0)
 			{
 			
 				printf ("ingrese un anio: ");
-				scanf ("%d", &aux2.fec.anio);
+				scanf ("%d", &anio);
 			
 			}else
 			{
 			
-				printf("no pa no seas tonto, vamos denuevo\n\n\n\n");
+				printf("Fecha no valida, ingrese denuevo\n\n\n\n");
+			
 				system("pause");
+			
 				system("cls");
+	
 				goto checkpoint;
 				
 			}
@@ -73,45 +77,64 @@ void Fechadepago()
 		}else
 		{
 			
-			printf("no pa no seas tonto, vamos denuevo\n\n\n\n");
+			printf("Fecha no valida, ingrese denuevo\n\n\n\n");
+			
 			system("pause");
+			
 			system("cls");
+			
 			goto checkpoint;
 			
 		}
 		
-		printf("\n\n\n\nla fecha ingresada es: %d/%d/%d\n", aux2.fec.dia, aux2.fec.mes, aux2.fec.anio);
+		printf("\n\n\n\nLa fecha ingresada es: %d/%d/%d\n", dia,mes,anio);
 		
 		while(fread(&aux, sizeof(aux), 1, arch))
 		{
 			
-			if(aux2.fec.anio >= aux.fec.anio)
+			if(anio > aux.fec.anio)
 			{
 				
-				if (aux2.fec.mes > aux.fec.mes)
+				b=true;
+				
+				if (mes > aux.fec.mes)
 				{
 					
-					if(aux2.fec.dia > aux.fec.dia)
+					b=true;
+					
+					if(dia > aux.fec.dia)
 					{
-						
-						printf("\n=> el gil de mierda que debe es: %d,", aux.dni);
-						printf(" y debe desde: %d/%d/%d ", aux.fec.dia, aux.fec.mes, aux.fec.anio);
-						
-						
+					
 						b=true;
 				
+					}else
+					{
+						
+						b=false;
+						1
 					}
+					
+				}else
+				{
+					
+					b=false;
 					
 				}
 					
+			}else
+			{
+				
+				b=false;
+				
 			}
-			
-		}
 		
-		if(!b)
-		{
+			if(b)
+			{
 		
-			printf("\n=> no se encontraron coincidencias");
+				printf("\n=> El Socio que debe es: %d,", aux.dni);
+				printf(" y debe desde: %d/%d/%d ", aux.fec.dia, aux.fec.mes, aux.fec.anio);
+				
+			}
 			
 		}
 		

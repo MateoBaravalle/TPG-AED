@@ -13,7 +13,7 @@ struct usuario
     char password[35];
 };
 
-void systemBlock();
+
 void login(int &opc,int cod);
 
 main()
@@ -21,10 +21,9 @@ main()
 	int op2 = 0;
 	int op3=0;
 	
-	while(op3!=2) 
+	while(op3!=2)
 	{
-		if(op3 != 1)
-			login(op3,0);
+		login(op3,0);
 		
 		switch(op3)
 		{
@@ -32,19 +31,16 @@ main()
 			case 0: //usuario valido
 				
 				op2=2;
-				op3=2;
-		
+						
 				break;
 			
 			case 1: //Maximo de intentos
 				
-				systemBlock();
 				break;
 			
 			case 2: //Atras
 				break;
 		}
-		
 	}
 	rlutil::locate(1,16);
 	printf("\nOpcion Devuelta --> %d - op2 %d",op3,op2);
@@ -53,7 +49,9 @@ main()
 }
 
 void login(int &opc,int cod)
-{	
+{
+	usuario user;
+	
 	char usuario[15];
 	char password[15];
 	int intentos = 0;
@@ -61,18 +59,11 @@ void login(int &opc,int cod)
  	
 	FILE *arch;
  	
-	arch=fopen("Usuarios.dat","rb");
-	
-	if (arch == NULL)
-    {
-        printf("Error al abrir el archivo\n");
-        exit(1);
-    }
+	arch=fopen("Usuarios.dat","a+b");
  	
  	
-	while(intentos<3)
+	while(!found && intentos<=3)
 	{
-		
 		rlutil::cls();
 		rlutil::locate(1,1);
 		
@@ -89,8 +80,6 @@ void login(int &opc,int cod)
 		printf("      |                                              |\n");
 		printf("      |                Volver (ESC)                  |\n");
 		printf("      \\_____________________________________________/\n");
-		rlutil::locate(1,15);
-		printf("Intentos Restantes --> %d",3-intentos++);
 		
 		rlutil::locate(24,6);
 		
@@ -101,6 +90,8 @@ void login(int &opc,int cod)
 		//Usuario		
 		while ((c = getch()) != 27 && i<11) 
 		{
+			
+			
 			if(c == 8)
 			{
 				if(i>0)
@@ -111,6 +102,7 @@ void login(int &opc,int cod)
 			}
 			else
 			{
+	        
 				if (c == 13 || i==10)  
 				{
 		            usuario[i] = '\0'; 
@@ -123,22 +115,28 @@ void login(int &opc,int cod)
 		        usuario[i] = c;        
 		        i++;
 			}
+			
+			rlutil::locate(1,15);
+			printf("Caracteres --> %d",i);
+			rlutil::locate(24+i,6);
+			
 	    }
 	    
 	    //Si presiono ESC
 	    if(c == 27)
 	    {
 	    	opc = 2;
-	    	fclose(arch);
 			return;	
 		}
 		
 		fflush(stdin);
+	    
 	    rlutil::locate(23,9);
 	    
 	    //Contraseña	    
 		while ((c = getch()) != 27 && i<33) 
 		{
+			
 			if(c == 8)
 			{
 				if(z>0)
@@ -149,6 +147,7 @@ void login(int &opc,int cod)
 			}
 			else
 			{
+	        
 				if (c == '\r' || z==32)  
 				{
 		            password[z] = '\0'; 
@@ -161,20 +160,24 @@ void login(int &opc,int cod)
 		        password[z] = c;        
 		        z++;
 			}
+			
+			rlutil::locate(1,15);
+			printf("Caracteres ---> %d",z);
+			rlutil::locate(23+z,9);
+			
 	    }
 		
 		//Si presiono ESC
 		if(c == 27)
 	    {
 	    	opc = 2;
-	    	fclose(arch);
 			return;	
 		}
 		
 		fflush(stdin);
 		
-		
-		struct usuario user;
+		rlutil::locate(1,16);
+		printf("Intentos --> %d",intentos);
 		
 		fseek(arch,0,SEEK_SET);
 		fread(&user,sizeof(user),1,arch);
@@ -191,7 +194,7 @@ void login(int &opc,int cod)
 						
 						switch(user.id)
 						{
-							case 0:  //COACH
+							case 0:
 							{
 								rlutil::locate(18,4);
 								printf("Coach Logeado correctamente!!");
@@ -199,7 +202,7 @@ void login(int &opc,int cod)
 								
 								break;
 							}
-							case 1: //RECEPCION
+							case 1:
 							{
 								rlutil::locate(14,4);
 								printf("Recepcion Logeado correctamente!!");
@@ -207,7 +210,7 @@ void login(int &opc,int cod)
 								
 								break;
 							}
-							case 2: //ADMIN
+							case 2:
 							{
 								rlutil::locate(18,4);
 								printf("Admin Logeado correctamente!!");
@@ -222,6 +225,8 @@ void login(int &opc,int cod)
 						rlutil::locate(21,4);
 						printf("Usuario no Autorizado!!");
 						sleep(2);
+						intentos++;
+						break;
 					}
 				}
 				else
@@ -229,9 +234,11 @@ void login(int &opc,int cod)
 					rlutil::locate(18,4);
 	        		printf("Contraseña Incorrecta!!");
 	        		sleep(2);
+	        		intentos++;
 				}
 				
 	            found = true;
+	            
 				break;
 	        }
 	        
@@ -245,31 +252,8 @@ void login(int &opc,int cod)
 	    	rlutil::locate(18,4);
 	    	printf("Usuario Inexistente!!");
 	    	sleep(2);
+	    	intentos++;
 		}
 	}
-	
-	if(intentos==3)
-	{
-		system("cls");
-		opc = 1;
-	}
-	
 	fclose(arch);
-}
-
-void systemBlock()
-{
-	system("cls");
-	printf ("Maximo de intentos alcanzados\n");
-	printf ("El sistema esta bloqueado, preciones ESC para salir");
-	
-	int key = 0;
-	
-	do
-	{
-		key = rlutil::getkey();
-		
-	}while (key != 0);
-	
-	exit(1);
 }

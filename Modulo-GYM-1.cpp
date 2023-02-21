@@ -50,11 +50,13 @@ void verListado()
         printf("Actividad: %s\n", socios[i].actividad);
         printf("Horario: %s\n", socios[i].horario);
     }
+    getch();
 }
 
 void registrarRutina() 
 {
-    if (numSocios == MAX_SOCIOS) {
+    if (numSocios == MAX_SOCIOS)
+	{
         printf("No se pueden registrar más socios, el límite es %d\n", MAX_SOCIOS);
         return;
     }
@@ -77,7 +79,7 @@ void registrarRutina()
     sprintf(socios[numSocios].horario, "%s", horario);
     numSocios++;
 
-    printf("Rutina registrada con exito\n");
+    printf("Rutina registrada con exito\n");	
     getch();
     system("cls");
 }

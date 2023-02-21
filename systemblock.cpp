@@ -24,13 +24,9 @@ void systemBlock()
 	{
 		key = rlutil::getkey();
 		
-		printf("\ntecla precionada: %d", key);
-		
-		
-	
-	
 	}while (key != 0);
 	
+	exit(1);
 	
 	
 }
